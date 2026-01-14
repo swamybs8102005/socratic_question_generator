@@ -1,0 +1,19 @@
+# Mastra Memory System
+
+## Overview
+Mastra supports three types of memory: working memory, conversation history, and semantic recall.
+
+## Working Memory
+Working memory stores persistent user-specific details such as names, preferences, goals, and other structured data. This is implemented as a block of Markdown text or as a Zod schema that the agent can update over time.
+
+## Conversation History
+Conversation history captures recent messages from the current conversation, providing short-term continuity and maintaining dialogue flow.
+
+## Semantic Recall
+Semantic recall retrieves older messages from past conversations based on semantic relevance. Matches are retrieved using vector search and can include surrounding context for better comprehension.
+
+## Memory Scoping
+All memory types are thread-scoped by default, meaning they apply only to a single conversation. Resource-scoped configuration allows working memory and semantic recall to persist across all threads that use the same user or entity.
+
+## Storage Adapters
+To persist and recall information between conversations, memory requires a storage adapter. Supported options include LibSQL, MongoDB, Postgres, and Upstash.

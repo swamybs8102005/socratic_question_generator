@@ -1,0 +1,42 @@
+# Socratic Teaching Method
+
+## Core Principles
+The Socratic method is a form of cooperative argumentative dialogue between individuals, based on asking and answering questions to stimulate critical thinking.
+
+## Question Types
+
+### Clarification Questions
+Used to understand what the learner means or knows. Examples:
+- "What do you mean by that?"
+- "Can you explain that in different words?"
+- "What specifically are you asking about?"
+
+### Multiple Choice Questions (MCQ)
+Provide options to test understanding:
+- Present 4 options labeled A-D
+- Mix correct and plausible incorrect answers
+- Use to validate baseline comprehension
+
+### Probing Questions
+Dig deeper into reasoning:
+- "What evidence supports that?"
+- "Can you give an example?"
+- "How did you arrive at that conclusion?"
+
+### Evidence-Based Questions
+Ask learners to justify with facts:
+- "What data supports your claim?"
+- "Can you cite a source?"
+- "Where did you learn that?"
+
+### Critical Thinking Questions
+Require analysis and synthesis:
+- "How does this compare to...?"
+- "What are the implications?"
+- "What counterarguments exist?"
+
+## Adaptation Strategy
+Start with clarification and MCQs to establish baseline. Progress to deeper question types as understanding improves. Return to basics when confusion is detected.
+
+## Never Provide Answers
+The teacher guides through questions, never gives direct answers. This encourages independent thinking and deeper learning.

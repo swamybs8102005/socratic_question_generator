@@ -1,0 +1,36 @@
+{
+  "name": "socratic-mastra",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/orchestrator/route.ts",
+    "start": "tsx src/api/server.ts",
+    "api": "tsx src/api/server.ts",
+    "ingest": "tsx src/rag/ingest.ts",
+    "reindex": "tsx src/rag/reindex.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^3.0.2",
+    "@ai-sdk/openai": "latest",
+    "@google/generative-ai": "^0.24.1",
+    "@mastra/core": "latest",
+    "@mastra/libsql": "latest",
+    "@mastra/memory": "latest",
+    "@mastra/pg": "latest",
+    "@mastra/rag": "latest",
+    "@qdrant/js-client-rest": "latest",
+    "ai": "^5.0.118",
+    "body-parser": "^2.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
