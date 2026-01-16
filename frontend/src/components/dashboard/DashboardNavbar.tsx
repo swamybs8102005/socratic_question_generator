@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Bell, Search, Settings, User } from 'lucide-react';
+import { Bell, Search, Settings, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -13,19 +13,29 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
-import { authClient } from '@/lib/auth';
 
 export const DashboardNavbar = () => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
         try {
-            await authClient.signOut();
-            navigate('/');
+            // Call backend logout endpoint
+            const token = localStorage.getItem('token');
+            if (token) {
+                await fetch('http://localhost:3001/api/auth/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+            }
         } catch (error) {
-            console.error("Logout failed:", error);
-            // Fallback redirect even on error
-            navigate('/');
+            console.error("Logout API error:", error);
+        } finally {
+            // Clear localStorage and redirect regardless of API result
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            navigate('/auth');
         }
     };
 
@@ -66,7 +76,7 @@ export const DashboardNavbar = () => {
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="cursor-pointer" asChild>
-                            <Link to="/account/profile" className="w-full flex items-center">
+                            <Link to="/dashboard/profile" className="w-full flex items-center">
                                 <User className="mr-2 h-4 w-4" /> Profile
                             </Link>
                         </DropdownMenuItem>
@@ -80,6 +90,7 @@ export const DashboardNavbar = () => {
                             className="cursor-pointer text-destructive focus:text-destructive"
                             onClick={handleLogout}
                         >
+                            <LogOut className="mr-2 h-4 w-4" />
                             Log out
                         </DropdownMenuItem>
                     </DropdownMenuContent>

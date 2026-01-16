@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import SpaceBackground from "@/components/SpaceBackground";
 import Navbar from "@/components/Navbar";
@@ -10,15 +10,24 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import DisciplinesSection from "@/components/DisciplinesSection";
 import MentorsSection from "@/components/MentorsSection";
 import Footer from "@/components/Footer";
+import { authClient } from "@/lib/auth";
 
 import {
-  SignedIn,
-  UserButton,
   AuthView,
 } from "@neondatabase/neon-js/auth/react/ui";
 
 const Index: React.FC = () => {
   const [showAuth, setShowAuth] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if user is signed in
+    authClient.getSession().then(session => {
+      setIsSignedIn(!!session);
+    }).catch(() => {
+      setIsSignedIn(false);
+    });
+  }, []);
 
   return (
     <>
@@ -56,12 +65,8 @@ const Index: React.FC = () => {
         {/* Footer */}
         <Footer />
 
-        {/* Optional: User Button somewhere in navbar/footer */}
-        <div className="absolute top-4 right-4">
-          <SignedIn>
-            <Navigate to="/dashboard" />
-          </SignedIn>
-        </div>
+        {/* Redirect to dashboard if signed in */}
+        {isSignedIn && <Navigate to="/dashboard" />}
       </div>
 
       {/* Auth modal, opened only when clicking Get Started */}

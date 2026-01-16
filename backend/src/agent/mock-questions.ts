@@ -9,25 +9,12 @@ export function generateMockQuestion(
   difficulty: DifficultyBand,
   topic: string
 ): string | StructuredQuestion {
-  const key = `${questionType}-${difficulty}`;
-  const index = questionCounters[key] || 0;
-  questionCounters[key] = index + 1;
-
-  // Check if topic is history-related and should include a map
-  const isHistoryTopic = /history|dynasty|empire|kingdom|war|civilization|ancient|medieval|colonial/i.test(topic);
-  
-  if (isHistoryTopic && (questionType === 'MCQ' || questionType === 'MapLocation')) {
-    return generateHistoryMapQuestion(topic, difficulty, index);
-  }
-
-  const templates = getQuestionTemplates(topic);
-  const questions = templates[questionType]?.[difficulty] || [];
-  
-  if (questions.length === 0) {
-    return `Explain the core paradox or tension in ${topic}. What makes it non-trivial?`;
-  }
-  
-  return questions[index % questions.length];
+  // Mock questions should not be used - throw error instead
+  console.error("🚫 MOCK QUESTIONS SHOULD NOT BE CALLED!");
+  console.error("Topic:", topic);
+  console.error("Type:", questionType);
+  console.error("Difficulty:", difficulty);
+  throw new Error("Mock questions disabled. API must be used. Check API configuration.");
 }
 
 function generateHistoryMapQuestion(topic: string, difficulty: DifficultyBand, index: number): StructuredQuestion {

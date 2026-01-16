@@ -8,13 +8,16 @@ import {
     TrendingUp,
     BookOpen,
     Users,
-    FileText
+    FileText,
+    History,
+    UserCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const sidebarItems = [
     { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
     { icon: BrainCircuit, label: 'Socratic Questions', path: '/dashboard/socratic' },
+    { icon: History, label: 'Quiz History', path: '/dashboard/quiz-history' },
     { icon: Gamepad2, label: 'Gamified Learning', path: '/dashboard/gamified' },
     { icon: TrendingUp, label: 'Progress & Analytics', path: '/dashboard/progress' },
     { icon: BookOpen, label: 'LMS / Syllabus', path: '/dashboard/syllabus' },

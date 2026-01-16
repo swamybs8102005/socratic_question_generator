@@ -16,6 +16,11 @@ export async function retrieveRAGContext(
   topK: number = 5
 ): Promise<RAGSignal[]> {
   try {
+    // Skip RAG for now - return empty array
+    console.log("⚠️ RAG retrieval skipped (embedding model version issue)");
+    return [];
+    
+    /* Disabled until embedding model is fixed
     await vectorStore.load();
     
     // Embed the query
@@ -40,6 +45,7 @@ export async function retrieveRAGContext(
       snippet: r.metadata?.text?.substring(0, 100) || "concept reference",
       difficulty: r.metadata?.difficulty || difficulty,
     }));
+    */
   } catch (err) {
     console.warn("RAG retrieval failed:", err);
     return [];

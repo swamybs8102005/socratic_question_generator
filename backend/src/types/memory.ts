@@ -18,6 +18,7 @@ export type WorkingMemory = z.infer<typeof workingMemorySchema>;
 export type QuestionType =
   | "Clarification"
   | "MCQ"
+  | "MultipleBlanksFill"
   | "FillInBlank"
   | "MultipleAnswers"
   | "Puzzle"
