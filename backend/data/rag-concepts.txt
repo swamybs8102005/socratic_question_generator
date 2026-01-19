@@ -1,0 +1,43 @@
+# RAG (Retrieval-Augmented Generation) in Mastra
+
+## What is RAG?
+RAG helps you enhance LLM outputs by incorporating relevant context from your own data sources, improving accuracy and grounding responses in real information.
+
+## Document Processing
+The basic building block of RAG is document processing. Documents can be chunked using various strategies:
+- Recursive chunking
+- Sliding window chunking
+- Sentence-based chunking
+
+## Chunking Strategy
+When chunking documents, you specify:
+- Chunk size (e.g., 512 tokens)
+- Overlap between chunks (e.g., 50 tokens)
+- Strategy type (recursive, sliding window, etc.)
+
+## Embeddings
+After chunking, each chunk is converted to a vector embedding using models like:
+- OpenAI text-embedding-3-small
+- Google text-embedding-004
+- Other embedding models
+
+## Vector Storage
+Embeddings are stored in vector databases that support similarity search:
+- pgvector (Postgres extension)
+- Pinecone
+- Qdrant
+- MongoDB Atlas Vector Search
+
+## Retrieval Process
+When a query comes in:
+1. Query is embedded using the same model
+2. Vector search finds similar chunks
+3. Top-K most relevant chunks are returned
+4. These chunks provide context to the LLM
+
+## Best Practices
+- Use appropriate chunk sizes for your domain
+- Include metadata (topic, difficulty, source) with chunks
+- Filter retrieval by metadata when needed
+- Never expose raw retrieved text to users
+- Use retrieval as implicit grounding for responses
